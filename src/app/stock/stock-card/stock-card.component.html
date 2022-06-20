@@ -1,0 +1,46 @@
+<div class="card m-4" *ngIf="stockData">
+  <div class="px-3 pt-3 card-title d-flex justify-content-between">
+    <h1>
+      {{stockData?.name}} ({{stockSymbol}})
+    </h1>
+    <div>
+      <button type="button" class="btn btn-danger" (click)="removeStock()">X</button>
+    </div>
+  </div>
+  <div class="card-body">
+    <div class="d-flex justify-content-around">
+      <div>
+        <div>
+          Change today: {{stockData.changeToday / 100  | percent : '.2' |enforcePositif:stockData.changeToday  }}
+        </div>
+        <div>
+          Opening price: {{stockData.openingPrice | currency : '$' : 'symbol' : '.3-7' }}
+        </div>
+        <div>
+          Current price: {{stockData.currentPrice | currency : '$' : 'symbol' : '.3-7' }}
+        </div>
+        <div>
+          High price: {{stockData.highPrice | currency : '$' : 'symbol' : '.3-7' }}
+        </div>
+      </div>
+      <div class="display-1" [ngClass]="stockData.changeToday < 0 ? 'text-danger' : 'text-success'">
+        {{stockData.changeToday < 0 ? "&#129095;" : "&#129093;"}}
+      </div>
+    </div>
+  </div>
+  <div class="card-footer">
+    <button type="button" class="btn btn-primary" [routerLink]="[ '/sentiment', stockData.symbol]">Go to social
+      sentiment details >
+    </button>
+
+  </div>
+</div>
+
+<!--
+Skeleton display
+-->
+<div class="card m-4" *ngIf="!stockData">
+  <div class="p-3">
+    <div class="is-loading-skeleton"></div>
+  </div>
+</div>

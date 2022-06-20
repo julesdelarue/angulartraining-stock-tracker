@@ -1,0 +1,13 @@
+<div class="card p-4">
+  <div class="card-title">Enter the symbol of a stock (i.e. AAPL, TSLA, GOOGL) </div>
+  <div class="card-body">
+    <form class="row row-cols-lg-auto g-3 align-items-center" novalidate (ngSubmit)="trackStock()" [formGroup]="trackStockForm">
+      <div class="col-12">
+          <input formControlName="symbol" type="text" class="form-control" placeholder="AAPL">
+      </div>
+      <div class="col-12">
+        <button [disabled]="trackStockForm.invalid" type="submit" class="btn btn-primary">Track Stock</button>
+      </div>
+    </form>
+  </div>
+</div>

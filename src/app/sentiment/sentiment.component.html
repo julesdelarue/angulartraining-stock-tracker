@@ -1,0 +1,39 @@
+<div class="card" *ngIf="sentimentData">
+  <div class="card-title">
+    <h1>{{sentimentData?.name}} ({{sentimentData.symbol}})</h1>
+  </div>
+  <div class="card-body">
+    <div class="alert alert-info" role="alert" *ngIf="sentimentData.data.length < 3">Unable to retrieve all sentiment data</div>
+    <div class="d-flex justify-content-around">
+      <div *ngFor="let sentiment of sentimentData.data">
+        <div>
+          {{sentiment.month | month | uppercase}}
+        </div>
+        <div>
+          Change: {{sentiment.change | enforcePositif:sentiment.change }}
+        </div>
+        <div>
+          MSPR: {{sentiment.mspr }}
+        </div>
+        <div class="display-1" [ngClass]="sentiment.change < 0 ? 'text-danger' : 'text-success'">
+          {{sentiment.change < 0 ? "&#129095;" : "&#129093;"}}
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!--
+Skeleton display
+-->
+<div class="card m-4" *ngIf="!sentimentData">
+  <div class="p-3">
+    <div class="is-loading-skeleton"></div>
+  </div>
+</div>
+<div>
+  <button type="button" class="btn btn-primary" (click)="previousState()">< Back to list of stocks</button>
+</div>
+
+
