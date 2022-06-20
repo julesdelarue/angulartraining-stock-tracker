@@ -8,6 +8,7 @@ import {IStock} from "../../shared/model/stock.model";
 })
 export class StockCardComponent implements OnInit {
 
+  //For simplicity, we assume this input is always defined
   @Input() stockSymbol!: string;
 
   stockData:IStock | undefined;

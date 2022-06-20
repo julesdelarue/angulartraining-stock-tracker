@@ -10,7 +10,7 @@ export class TrackStockFormComponent implements OnInit {
 
   trackStockForm = this.fb.group({
     // Business rule : Stock symbol is a 1 to 5-letter code
-    // TODO add async validator to check if symbol exists
+    // TODO add async validator to check if symbol exists -> Not implemented, should be a nice feature to avoid wrong displays
     symbol: [null, [Validators.required, Validators.pattern('^[a-zA-Z]+$'), Validators.maxLength(5)]]
   });
 

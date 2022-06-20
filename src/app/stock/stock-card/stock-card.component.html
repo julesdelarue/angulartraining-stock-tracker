@@ -1,7 +1,7 @@
 <div class="card m-4" *ngIf="stockData">
   <div class="px-3 pt-3 card-title d-flex justify-content-between">
     <h1>
-      {{stockData?.name}} ({{stockSymbol}})
+      {{stockData?.name}} ({{stockData?.symbol}})
     </h1>
     <div>
       <button type="button" class="btn btn-danger" (click)="removeStock()">X</button>
